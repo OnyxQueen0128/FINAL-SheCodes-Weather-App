@@ -11,15 +11,20 @@
   </head>
   <body>
     <div class="container">
+      <div class="weather-app-wrapping">
       <div class="weather-app">
+        <div class="overview">
       <h1>Zurich</h1>
       <ul>
         <li>Friday 12:00</li>
         <li>Clear</li> 
+        </div>
         <div class="row">
           <div class="col-6">
-            <img src="https://ssl.gstatic.com/onebox/weather/64/sunny.png" alt="Clear"/>
-            17°C | °F
+            <div class="d-flex weather-temperature">
+            <img src="https://ssl.gstatic.com/onebox/weather/64/sunny.png" alt="Clear"/> 
+              <strong>17</strong><span class="temp-units">°C | <a href="#">°F</a></span>
+            </div>
           </div>
           <div class="col-6">
             <ul>
@@ -36,7 +41,8 @@
           </div>
         </div>
       </ul>
-    <footer>
+  </div>
+  <footer>
       <a
         class="codedbylink"
         href="https://github.com/OnyxQueen0128/FINAL-SheCodes-Weather-App"
@@ -51,7 +57,7 @@
         >Lysandra Webba Jorge</a
       >
     </footer>
-  </div>
+</div>
 </div>
   </body>
     <script src="src/app.js"/></script>
