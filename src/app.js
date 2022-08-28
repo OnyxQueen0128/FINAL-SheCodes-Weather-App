@@ -42,8 +42,19 @@ function displayTemperature(response) {
   iconIndicator.setAttribute("alt", response.data.weather[0].description);
 }
 
-let apiKey = "213b9f4d2bf744ddfe96906f0ba3da1f";
-let city = "Zurich";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+function search(city) {
+  let apiKey = "213b9f4d2bf744ddfe96906f0ba3da1f";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
 
-axios.get(apiUrl).then(displayTemperature);
+function inputSearch(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#city-input");
+  search(cityInput.value);
+}
+
+search("Zurich");
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", inputSearch);
