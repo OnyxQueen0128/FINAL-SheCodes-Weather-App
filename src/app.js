@@ -27,15 +27,23 @@ function displayTemperature(response) {
   let humidityIndicator = document.querySelector("#humidity");
   let windSpeed = document.querySelector("#wind");
   let dateIndicator = document.querySelector("#date");
+  let iconIndicator = document.querySelector("#icon");
+
   temperatureIndicator.innerHTML = Math.round(response.data.main.temp);
   cityName.innerHTML = response.data.name;
   weatherDescription.innerHTML = response.data.weather[0].description;
   humidityIndicator.innerHTML = response.data.main.humidity;
   windSpeed.innerHTML = Math.round(response.data.wind.speed);
   dateIndicator.innerHTML = formatDate(response.data.dt * 1000);
+  iconIndicator.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconIndicator.setAttribute("alt", response.data.weather[0].description);
 }
 
 let apiKey = "213b9f4d2bf744ddfe96906f0ba3da1f";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Zurich&appid=${apiKey}&units=metric`;
+let city = "Zurich";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
 axios.get(apiUrl).then(displayTemperature);
