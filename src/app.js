@@ -28,6 +28,7 @@ function displayTemperature(response) {
   let windSpeed = document.querySelector("#wind");
   let dateIndicator = document.querySelector("#date");
   let iconIndicator = document.querySelector("#icon");
+  celciusTemperature = response.data.main.temp;
 
   temperatureIndicator.innerHTML = Math.round(response.data.main.temp);
   cityName.innerHTML = response.data.name;
@@ -54,7 +55,32 @@ function inputSearch(event) {
   search(cityInput.value);
 }
 
-search("Zurich");
+function displayFarenheightTemp(event) {
+  event.preventDefault();
+  let farenheightTemperature = (celciusTemperature * 9) / 5 + 32;
+  let temperatureIndicator = document.querySelector("#maintemperature");
+  temperatureIndicator.innerHTML = Math.round(farenheightTemperature);
+  celciusLink.classList.remove("active");
+  farenheightLink.classList.add("active");
+}
+
+function displayCelciusTemp(event) {
+  event.preventDefault();
+  let temperatureIndicator = document.querySelector("#maintemperature");
+  temperatureIndicator.innerHTML = Math.round(celciusTemperature);
+  farenheightLink.classList.remove("active");
+  celciusLink.classList.add("active");
+}
+
+let celciusTemperature = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", inputSearch);
+
+let farenheightLink = document.querySelector("#farenheight-link");
+farenheightLink.addEventListener("click", displayFarenheightTemp);
+
+let celciusLink = document.querySelector("#celcius-link");
+celciusLink.addEventListener("click", displayCelciusTemp);
+
+search("Zurich");
