@@ -20,6 +20,30 @@ function formatDate(timestamp) {
   ];
   return `${days[day]} ${hours}:${minutes}`;
 }
+function dispalyForecast() {
+  let forecastIndicators = document.querySelector("#forecast");
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+              <div class="weather-forecast-date">
+                ${day} 
+              </div> 
+              <img src="http://openweathermap.org/img/wn/01n@2x.png" alt="" width="42">
+              <div class="weather-forecast-temperatures">
+                <span class="weather-forecast-temperature-max">
+                  18</span>°
+                <span class="weather-forecast-temperature-min">
+                  12</span>°
+              </div>
+            </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastIndicators.innerHTML = forecastHTML;
+}
 function displayTemperature(response) {
   let temperatureIndicator = document.querySelector("#maintemperature");
   let cityName = document.querySelector("#city");
@@ -28,8 +52,8 @@ function displayTemperature(response) {
   let windSpeed = document.querySelector("#wind");
   let dateIndicator = document.querySelector("#date");
   let iconIndicator = document.querySelector("#icon");
-  celciusTemperature = response.data.main.temp;
 
+  celciusTemperature = response.data.main.temp;
   temperatureIndicator.innerHTML = Math.round(response.data.main.temp);
   cityName.innerHTML = response.data.name;
   weatherDescription.innerHTML = response.data.weather[0].description;
@@ -84,3 +108,4 @@ let celciusLink = document.querySelector("#celcius-link");
 celciusLink.addEventListener("click", displayCelciusTemp);
 
 search("Zurich");
+dispalyForecast();
