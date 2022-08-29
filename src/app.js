@@ -20,7 +20,7 @@ function formatDate(timestamp) {
   ];
   return `${days[day]} ${hours}:${minutes}`;
 }
-function dispalyForecast() {
+function dispalyForecast(response) {
   let forecastIndicators = document.querySelector("#forecast");
   let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
   let forecastHTML = `<div class="row">`;
@@ -44,6 +44,13 @@ function dispalyForecast() {
   forecastHTML = forecastHTML + `</div>`;
   forecastIndicators.innerHTML = forecastHTML;
 }
+
+function getForecast(coordinates) {
+  let apiKey = "a43564c91a6c605aeb564c9ed02e3858";
+  let apiUrl = ` https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(dispalyForecast);
+}
+
 function displayTemperature(response) {
   let temperatureIndicator = document.querySelector("#maintemperature");
   let cityName = document.querySelector("#city");
@@ -65,6 +72,8 @@ function displayTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconIndicator.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
 function search(city) {
@@ -108,4 +117,3 @@ let celciusLink = document.querySelector("#celcius-link");
 celciusLink.addEventListener("click", displayCelciusTemp);
 
 search("Zurich");
-dispalyForecast();
