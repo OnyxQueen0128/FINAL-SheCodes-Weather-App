@@ -1,5 +1,7 @@
 body {
   font-family: Arial, sans-serif;
+  background-color: #fff9ca;
+  color: #48484a;
 }
 h1 {
   font-size: 24px;
@@ -25,14 +27,29 @@ li:first-letter {
 a {
   text-decoration: none;
 }
+footer {
+  text-align: center;
+  padding-top: 30px;
+  font-size: smaller;
+  text-decoration: none;
+  color: #b2a4ff;
+}
+footer:hover {
+  text-decoration: none;
+}
 .weather-app-wrapping {
   max-width: 600px;
   margin: 40px auto;
 }
 .weather-app {
   padding: 20px;
-  border: 2px solid lightgray;
+  border: 2px solid #ffdeb4;
+  background-color: #ffdeb4;
   border-radius: 10px;
+}
+.btn {
+  background-color: #ec6e4c;
+  color: #f2f2f1;
 }
 .overview {
   margin-bottom: 20px;
