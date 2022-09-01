@@ -1,3 +1,12 @@
+let body = document.querySelector("body");
+let toggle = document.querySelector(".toggle");
+
+toggle.addEventListener("click", () => {
+  body.classList.toggle("dark")
+    ? (toggle.firstElementChild.className = "far fa-moon")
+    : (toggle.firstElementChild.className = "far fa-sun");
+});
+
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
@@ -41,9 +50,9 @@ function dispalyForecast(response) {
               <div class="weather-forecast-date">
                 ${formatDay(forecastDay.dt)} 
               </div>
-              <img src="http://openweathermap.org/img/wn/${
+              <img src="media/${
                 forecastDay.weather[0].icon
-              }@2x.png" alt="" width="42">
+              }.png" alt="" width="42">
               <div class="weather-forecast-temperatures">
                 <span class="weather-forecast-temperature-max">
                   ${Math.round(forecastDay.temp.max)}</span>°
@@ -85,7 +94,7 @@ function displayTemperature(response) {
   dateIndicator.innerHTML = formatDate(response.data.dt * 1000);
   iconIndicator.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `media/${response.data.weather[0].icon}.png`
   );
   iconIndicator.setAttribute("alt", response.data.weather[0].description);
 
