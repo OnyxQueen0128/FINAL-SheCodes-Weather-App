@@ -8,6 +8,7 @@ h1 {
   font-weight: 100;
   line-height: 28px;
   margin-bottom: 0;
+  color: #ec6e4c;
 }
 ul {
   margin: 0;
@@ -15,11 +16,12 @@ ul {
 }
 li {
   list-style: none;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 100;
-  line-height: 19px;
+  line-height: 20px;
   margin: 0;
   padding: 0;
+  color: #48484a;
 }
 li:first-letter {
   text-transform: capitalize;
@@ -46,10 +48,15 @@ footer:hover {
   border: 2px solid #ffdeb4;
   background-color: #ffdeb4;
   border-radius: 10px;
+  box-shadow: 0px 0px 55px 12px rgba(216, 115, 19, 0.1);
 }
 .btn {
   background-color: #ec6e4c;
   color: #f2f2f1;
+}
+.btn:hover {
+  background-color: #f2f2f1;
+  color: #ec6e4c;
 }
 .overview {
   margin-bottom: 20px;
@@ -75,6 +82,8 @@ footer:hover {
 .weather-forecast {
   margin-top: 20px;
   text-align: center;
+  border-radius: 10px;
+  padding: 10px 15px;
 }
 .weather-forecast-date {
   font-size: 16px;

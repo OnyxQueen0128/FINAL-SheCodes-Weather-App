@@ -65,11 +65,13 @@ function getForecast(coordinates) {
 }
 
 function displayTemperature(response) {
+  console.log(response);
   let temperatureIndicator = document.querySelector("#maintemperature");
   let cityName = document.querySelector("#city");
   let weatherDescription = document.querySelector("#skydescription");
   let humidityIndicator = document.querySelector("#humidity");
   let windSpeed = document.querySelector("#wind");
+  let feelsLike = document.querySelector("#feelsLike");
   let dateIndicator = document.querySelector("#date");
   let iconIndicator = document.querySelector("#icon");
 
@@ -79,6 +81,7 @@ function displayTemperature(response) {
   weatherDescription.innerHTML = response.data.weather[0].description;
   humidityIndicator.innerHTML = response.data.main.humidity;
   windSpeed.innerHTML = Math.round(response.data.wind.speed);
+  feelsLike.innerHTML = Math.round(response.data.main.feels_like);
   dateIndicator.innerHTML = formatDate(response.data.dt * 1000);
   iconIndicator.setAttribute(
     "src",
