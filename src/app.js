@@ -1,12 +1,30 @@
-let body = document.querySelector("body");
-let toggle = document.querySelector(".toggle");
+function darkMode() {
+  let body = document.querySelector("body");
+  let toggle = document.querySelector(".toggle");
+  let h1 = document.querySelector("h1");
+  let ul = document.querySelector("ul");
+  let footer = document.querySelector("footer");
+  let weatherApp = document.querySelector(".weather-app");
+  let btn = document.querySelector(".btn");
+  let weatherTemperature = document.querySelector(".weather-temperature");
+  let i = document.querySelector("i");
+  let weatherForecast = document.querySelector(".weather-forecast");
 
-toggle.addEventListener("click", () => {
-  body.classList.toggle("dark")
-    ? (toggle.firstElementChild.className = "far fa-moon")
-    : (toggle.firstElementChild.className = "far fa-sun");
-});
-
+  toggle.addEventListener("click", () => {
+    body.classList.toggle("dark");
+    toggle.classList.toggle("dark");
+    h1.classList.toggle("dark");
+    ul.classList.toggle("dark");
+    footer.classList.toggle("dark");
+    weatherApp.classList.toggle("dark");
+    btn.classList.toggle("dark");
+    weatherTemperature.classList.toggle("dark");
+    i.classList.toggle("dark");
+    weatherForecast.classList.toggle("dark")
+      ? (toggle.firstElementChild.className = "far fa-moon")
+      : (toggle.firstElementChild.className = "far fa-sun");
+  });
+}
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
@@ -142,3 +160,4 @@ let celciusLink = document.querySelector("#celcius-link");
 celciusLink.addEventListener("click", displayCelciusTemp);
 
 search("Zurich");
+darkMode();
